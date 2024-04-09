@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
         Layout.setContentsMargins(40,40,40,100)
 
         #Label 1
-        self.Label_1 = QLabel("Title",self)
+        self.Label_1 = QLabel("List Maker",self)
         self.Label_1.setAlignment(Qt.AlignHCenter)
         self.Font_1 = self.Label_1.font()
         self.Font_1.setPointSize(20)
@@ -27,12 +27,12 @@ class MainWindow(QMainWindow):
         Layout.addWidget(self.Label_1)
 
         #Line Edit 1
-        Line_Edit = QLineEdit(self)
-        Layout.addWidget(Line_Edit)
+        self.Line_Edit = QLineEdit(self)
+        Layout.addWidget(self.Line_Edit)
 
         #Button 1
         self.Button_1 = QPushButton("Push",self)
-        self.Button_1.clicked.connect(lambda: self.Button_1_Clicked(Line_Edit.text()))
+        self.Button_1.clicked.connect(lambda: self.Button_1_Clicked(self.Line_Edit.text()))
         Layout.addWidget(self.Button_1)
 
         #List 1
@@ -42,6 +42,7 @@ class MainWindow(QMainWindow):
 
     def Button_1_Clicked(self,text):
         self.list.addItem(text)
+        self.Line_Edit.clear()
 
     def List_Remove(self,item):
         self.list.takeItem(self.list.row(item))
